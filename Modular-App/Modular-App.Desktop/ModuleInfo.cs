@@ -64,7 +64,7 @@ namespace Modular_App.Desktop
             {
                 var constructorInfo = _moduleType.GetConstructor(Type.EmptyTypes);
                 if (constructorInfo == null)
-                    throw new ApplicationException($"{_moduleType.FullName} doesn't have a public constructor with empty parameters");
+                    throw new ConstructorNotFoundException($"{_moduleType.FullName} doesn't have a public constructor with empty parameters");
 
                 this.Module = constructorInfo.Invoke(null) as BaseModuleForm;
             }
