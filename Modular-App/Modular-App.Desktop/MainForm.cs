@@ -16,6 +16,7 @@ namespace Modular_App.Desktop
         {
             InitializeComponent();
             ConfigureControls();
+            SetupNavigationMenuFromModules();
         }
 
         private void ConfigureControls()
@@ -26,6 +27,17 @@ namespace Modular_App.Desktop
             this.listBoxModules.SelectedIndexChanged += ListBoxModules_OnSelectedIndexChanged;
 
             this.menuItemExit.Click += MenuItemExit_OnClick;
+        }
+
+        // Populate navigation items in ListBox from the registered Modules
+        private void SetupNavigationMenuFromModules()
+        {
+            int itemCount = ModuleInfoCollection.Instance.Count;
+            for(int index = 0; index < itemCount; index++)
+            {
+                var moduleInfo = ModuleInfoCollection.Instance[index];
+                this.listBoxModules.Items.Add(moduleInfo.Name);
+            }
         }
 
         private void ListBoxModules_OnSelectedIndexChanged(object sender, EventArgs e)

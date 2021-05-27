@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Modular_App.Desktop
 {
-    public partial class DemoModule2From : Form
+    public partial class DemoModule2From : BaseModuleForm
     {
         public DemoModule2From()
         {
