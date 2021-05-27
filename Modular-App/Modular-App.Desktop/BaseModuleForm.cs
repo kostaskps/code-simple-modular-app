@@ -11,5 +11,10 @@ namespace Modular_App.Desktop
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Gets or sets the navigation index of the module
+        /// </summary>
+        public int NavigationIndex { get; set; }
     }
 }

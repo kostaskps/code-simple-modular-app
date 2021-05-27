@@ -34,16 +34,32 @@ namespace Modular_App.Desktop
         public BaseModuleForm Module { get; private set; }
 
         /// <summary>
+        /// Gets or sets the index of the module displayed in the Navigation List
+        /// </summary>
+        public int NavigationIndex { get; set; }
+
+        /// <summary>
         /// Show the module on a control 
         /// </summary>
         /// <param name="parent"></param>
-        public void Show(Control parent)
+        public void Show(MDIWindowManager.WindowManagerPanel parent)
         {
             CreateModule();
-            Module.Visible = false;
-            Module.Parent = parent;
-            Module.Dock = DockStyle.Fill;
-            Module.Visible = true;
+            //Module.Visible = false;
+            //Module.Parent = parent;
+            //Module.Dock = DockStyle.Fill;
+            //Module.Visible = true;
+            Module.NavigationIndex = NavigationIndex;
+            parent.AddWindow(Module);
+        }
+
+        /// <summary>
+        /// Activate the module in MDI panel
+        /// </summary>
+        /// <param name="parent"></param>
+        public void ActivateWindow(MDIWindowManager.WindowManagerPanel parent)
+        {
+            parent.SetActiveWindow(Module);
         }
 
         /// <summary>

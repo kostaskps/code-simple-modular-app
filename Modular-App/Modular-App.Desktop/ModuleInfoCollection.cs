@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections;
-using System.Windows.Forms;
+using MDIWindowManager;
 
 namespace Modular_App.Desktop
 {
@@ -68,16 +68,37 @@ namespace Modular_App.Desktop
         /// </summary>
         /// <param name="moduleInfo"></param>
         /// <param name="parent"></param>
-        public static void ShowModule(ModuleInfo moduleInfo, Control parent)
+        public static void ShowModule(ModuleInfo moduleInfo, WindowManagerPanel parent)
         {
             if (moduleInfo == Instance._currentModuleInfo)
                 return;
-            if (Instance._currentModuleInfo != null)
-                Instance._currentModuleInfo.Hide();
 
-            moduleInfo.Show(parent);
+            bool containsModule = ContainsModule(moduleInfo, parent);
+            if (containsModule)
+                moduleInfo.ActivateWindow(parent);
+            else
+                moduleInfo.Show(parent);
+
             Instance._currentModuleInfo = moduleInfo;
         }
+
+        /// <summary>
+        /// Gets a value indicating if the module was found
+        /// </summary>
+        /// <param name="moduleInfo">The module to search for</param>
+        /// <param name="parent">The MDI Panel containing the modules</param>
+        /// <returns></returns>
+        private static bool ContainsModule(ModuleInfo moduleInfo, WindowManagerPanel parent)
+        {
+            var formsCount = parent.GetAllWindows().Count;
+            for (int index = 0; index < formsCount; index++)
+            {
+                if (parent.GetAllWindows(false)[index].Window == moduleInfo.Module)
+                    return true;
+            }
+            return false;
+        }
+
 
         /// <summary>
         /// Initializes the static field of Instance

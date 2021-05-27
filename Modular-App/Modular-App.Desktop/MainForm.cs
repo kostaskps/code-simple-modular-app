@@ -23,6 +23,9 @@ namespace Modular_App.Desktop
         {
             StartPosition = FormStartPosition.CenterScreen;
 
+            this.mdiPanel.AutoDetectMdiChildWindows = false;
+            this.mdiPanel.WindowActivated += MdiPanel_OnWindowActivated;
+            
             this.listBoxModules.IntegralHeight = false;
             this.listBoxModules.SelectedIndexChanged += ListBoxModules_OnSelectedIndexChanged;
 
@@ -40,9 +43,20 @@ namespace Modular_App.Desktop
             }
         }
 
+        private void MdiPanel_OnWindowActivated(object sender, MDIWindowManager.WrappedWindowEventArgs e)
+        {
+            var module = e.WrappedWindow.Window as BaseModuleForm;
+            listBoxModules.SelectedIndex = module.NavigationIndex;
+        }
+
         private void ListBoxModules_OnSelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            if(this.listBoxModules.SelectedIndex > -1)
+            {
+                var moduleInfo = ModuleInfoCollection.Instance[listBoxModules.SelectedIndex];
+                moduleInfo.NavigationIndex = listBoxModules.SelectedIndex;
+                ModuleInfoCollection.ShowModule(moduleInfo, mdiPanel);
+            }
         }
 
         private void MenuItemExit_OnClick(object sender, EventArgs e)
