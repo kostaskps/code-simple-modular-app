@@ -22,6 +22,8 @@ namespace Modular_App.Desktop
         {
             StartPosition = FormStartPosition.CenterScreen;
 
+            this.listBoxModules.IntegralHeight = false;
+
             this.menuItemExit.Click += MenuItemExit_OnClick;
         }
 

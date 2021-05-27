@@ -32,6 +32,8 @@ namespace Modular_App.Desktop
             this.topMenu = new System.Windows.Forms.MenuStrip();
             this.menuItemFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.bottomStatusBar = new System.Windows.Forms.StatusStrip();
+            this.listBoxModules = new System.Windows.Forms.ListBox();
             this.topMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,11 +61,30 @@ namespace Modular_App.Desktop
             this.menuItemExit.Size = new System.Drawing.Size(180, 22);
             this.menuItemExit.Text = "Exit";
             // 
+            // bottomStatusBar
+            // 
+            this.bottomStatusBar.Location = new System.Drawing.Point(0, 412);
+            this.bottomStatusBar.Name = "bottomStatusBar";
+            this.bottomStatusBar.Size = new System.Drawing.Size(800, 22);
+            this.bottomStatusBar.TabIndex = 1;
+            this.bottomStatusBar.Text = "statusStrip1";
+            // 
+            // listBoxModules
+            // 
+            this.listBoxModules.Dock = System.Windows.Forms.DockStyle.Left;
+            this.listBoxModules.FormattingEnabled = true;
+            this.listBoxModules.Location = new System.Drawing.Point(0, 24);
+            this.listBoxModules.Name = "listBoxModules";
+            this.listBoxModules.Size = new System.Drawing.Size(154, 388);
+            this.listBoxModules.TabIndex = 2;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.listBoxModules);
+            this.Controls.Add(this.bottomStatusBar);
             this.Controls.Add(this.topMenu);
             this.MainMenuStrip = this.topMenu;
             this.Name = "MainForm";
@@ -80,6 +101,8 @@ namespace Modular_App.Desktop
         private System.Windows.Forms.MenuStrip topMenu;
         private System.Windows.Forms.ToolStripMenuItem menuItemFile;
         private System.Windows.Forms.ToolStripMenuItem menuItemExit;
+        private System.Windows.Forms.StatusStrip bottomStatusBar;
+        private System.Windows.Forms.ListBox listBoxModules;
     }
 }
 
