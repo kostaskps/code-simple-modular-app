@@ -53,6 +53,18 @@
       <DependentUpon>BaseModuleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ConstructorNotFoundException.cs" />
+    <Compile Include="DemoModule1From.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DemoModule1From.Designer.cs">
+      <DependentUpon>DemoModule1From.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DemoModule2From.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DemoModule2From.Designer.cs">
+      <DependentUpon>DemoModule2From.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +76,12 @@
     <Compile Include="ModulesRegistration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DemoModule1From.resx">
+      <DependentUpon>DemoModule1From.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemoModule2From.resx">
+      <DependentUpon>DemoModule2From.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

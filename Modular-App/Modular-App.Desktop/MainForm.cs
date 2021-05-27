@@ -23,8 +23,14 @@ namespace Modular_App.Desktop
             StartPosition = FormStartPosition.CenterScreen;
 
             this.listBoxModules.IntegralHeight = false;
+            this.listBoxModules.SelectedIndexChanged += ListBoxModules_OnSelectedIndexChanged;
 
             this.menuItemExit.Click += MenuItemExit_OnClick;
+        }
+
+        private void ListBoxModules_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
 
         private void MenuItemExit_OnClick(object sender, EventArgs e)
