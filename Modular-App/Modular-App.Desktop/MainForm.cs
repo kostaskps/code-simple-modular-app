@@ -15,7 +15,19 @@ namespace Modular_App.Desktop
         public MainForm()
         {
             InitializeComponent();
+            ConfigureControls();
+        }
+
+        private void ConfigureControls()
+        {
             StartPosition = FormStartPosition.CenterScreen;
+
+            this.menuItemExit.Click += MenuItemExit_OnClick;
+        }
+
+        private void MenuItemExit_OnClick(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
