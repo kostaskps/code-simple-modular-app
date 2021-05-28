@@ -7,8 +7,8 @@
         /// </summary>
         public static void Register()
         {
-            ModuleInfoCollection.Add("Demo Module 1", typeof(DemoModule1From));
-            ModuleInfoCollection.Add("Demo Module 2", typeof(DemoModule2From));
+            ModuleInfoCollection.Add("Demo Module 1", typeof(DemoModule1Form));
+            ModuleInfoCollection.Add("Demo Module 2", typeof(DemoModule2Form));
         }
     }
 }

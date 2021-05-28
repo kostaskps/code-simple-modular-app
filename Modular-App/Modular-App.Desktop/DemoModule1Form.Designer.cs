@@ -1,7 +1,7 @@
 ﻿
 namespace Modular_App.Desktop
 {
-    partial class DemoModule1From
+    partial class DemoModule1Form
     {
         /// <summary>
         /// Required designer variable.
@@ -41,14 +41,14 @@ namespace Modular_App.Desktop
             this.label1.TabIndex = 0;
             this.label1.Text = "Demo Module 1";
             // 
-            // DemoModule1From
+            // DemoModule1Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(474, 311);
             this.Controls.Add(this.label1);
-            this.Name = "DemoModule1From";
-            this.Text = "DemoModule1From";
+            this.Name = "DemoModule1Form";
+            this.Text = "Module 1";
             this.ResumeLayout(false);
             this.PerformLayout();
 

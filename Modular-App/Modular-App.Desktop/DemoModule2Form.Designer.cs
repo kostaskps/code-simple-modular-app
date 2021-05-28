@@ -1,7 +1,7 @@
 ﻿
 namespace Modular_App.Desktop
 {
-    partial class DemoModule2From
+    partial class DemoModule2Form
     {
         /// <summary>
         /// Required designer variable.
@@ -46,7 +46,7 @@ namespace Modular_App.Desktop
             this.ClientSize = new System.Drawing.Size(474, 311);
             this.Controls.Add(this.textBox1);
             this.Name = "DemoModule2Form";
-            this.Text = "DemoModule2Form";
+            this.Text = "Module 2";
             this.ResumeLayout(false);
             this.PerformLayout();
 
