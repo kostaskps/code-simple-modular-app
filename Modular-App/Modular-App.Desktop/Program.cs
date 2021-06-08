@@ -19,7 +19,7 @@ namespace Modular_App.Desktop
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            ModulesRegistration.Register();
+            ModuleRegistrator.Register();
 
             Application.Run(new MainForm());
         }

@@ -73,7 +73,8 @@
     </Compile>
     <Compile Include="ModuleInfo.cs" />
     <Compile Include="ModuleInfoCollection.cs" />
-    <Compile Include="ModulesRegistration.cs" />
+    <Compile Include="ModuleManager.cs" />
+    <Compile Include="ModuleRegistrator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DemoModule1Form.resx">

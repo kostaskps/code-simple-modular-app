@@ -1,61 +1,66 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Modular_App.Desktop
 {
     public partial class MainForm : Form
     {
+        
         public MainForm()
         {
             InitializeComponent();
             ConfigureControls();
-            SetupNavigationMenuFromModules();
+            SetupNavigationListFromModules();
         }
 
         private void ConfigureControls()
         {
+            int width = Screen.PrimaryScreen.Bounds.Width / 2;
+            int height = Screen.PrimaryScreen.Bounds.Height / 2;
+            Size = new Size(width, height);
             StartPosition = FormStartPosition.CenterScreen;
 
-            this.mdiPanel.AutoDetectMdiChildWindows = false;
-            this.mdiPanel.WindowActivated += MdiPanel_OnWindowActivated;
-            
-            this.listBoxModules.IntegralHeight = false;
-            this.listBoxModules.SelectedIndexChanged += ListBoxModules_OnSelectedIndexChanged;
+            ModuleManager.SetContainer(mdiPanel);
 
-            this.menuItemExit.Click += MenuItemExit_OnClick;
+            mdiPanel.AutoDetectMdiChildWindows = false;
+            mdiPanel.DisableHTileAction = true;
+            mdiPanel.DisablePopoutAction = true;
+            mdiPanel.DisableTileAction = true;
+            mdiPanel.WindowActivated += MdiPanel_OnWindowActivated;
+
+            listBoxModules.IntegralHeight = false;
+            listBoxModules.SelectedIndexChanged += ListBoxModules_OnSelectedIndexChanged;
+
+            menuItemExit.Click += MenuItemExit_OnClick;
         }
 
+        ModuleManager ModuleManager { get { return ModuleManager.Default; } }
+
         // Populate navigation items in ListBox from the registered Modules
-        private void SetupNavigationMenuFromModules()
+        private void SetupNavigationListFromModules()
         {
-            int itemCount = ModuleInfoCollection.Instance.Count;
-            for(int index = 0; index < itemCount; index++)
+            listBoxModules.DisplayMember = "Name";
+            listBoxModules.ValueMember = "ModuleType";
+
+            for (int index = 0; index < ModuleManager.Modules.Count; index++)
             {
-                var moduleInfo = ModuleInfoCollection.Instance[index];
-                this.listBoxModules.Items.Add(moduleInfo.Name);
+                var moduleInfo = ModuleManager.Modules[index];
+                listBoxModules.Items.Add(moduleInfo);
             }
         }
 
         private void MdiPanel_OnWindowActivated(object sender, MDIWindowManager.WrappedWindowEventArgs e)
         {
-            var module = e.WrappedWindow.Window as BaseModuleForm;
-            listBoxModules.SelectedIndex = module.NavigationIndex;
+            //var module = e.WrappedWindow.Window as BaseModuleForm;
+            //listBoxModules.SelectedIndex = module.NavigationIndex;
         }
 
         private void ListBoxModules_OnSelectedIndexChanged(object sender, EventArgs e)
         {
-            if(this.listBoxModules.SelectedIndex > -1)
+            if (listBoxModules.SelectedIndex > -1)
             {
-                var moduleInfo = ModuleInfoCollection.Instance[listBoxModules.SelectedIndex];
-                moduleInfo.NavigationIndex = listBoxModules.SelectedIndex;
-                ModuleInfoCollection.ShowModule(moduleInfo, mdiPanel);
+                ModuleManager.ShowModule(listBoxModules.SelectedIndex);
             }
         }
 
